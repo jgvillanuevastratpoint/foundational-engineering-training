@@ -41,6 +41,18 @@
 | [input/azure-data-engineering/airflow-data-engineering.md](./input/azure-data-engineering/airflow-data-engineering.md) | Azure Data Engineering training curriculum & costing guide with module breakdown |
 | [input/azure-data-engineering/handson.txt](./input/azure-data-engineering/handson.txt) | Serverless Data Engineering Pipeline hands-on lab guide (Azure) |
 
+### Foundational Engineering (new)
+
+| File | Topic |
+|------|-------|
+| [input/0-foundations/01-git-and-code-review-discipline.md](./input/0-foundations/01-git-and-code-review-discipline.md) | Git workflow, PR/code review size, Conventional Commits, review as teaching |
+| [input/0-foundations/02-linux-and-networking-basics.md](./input/0-foundations/02-linux-and-networking-basics.md) | Shell fluency, systemd/journalctl, DNS/TCP/TLS pipeline, curl diagnostics |
+| [input/0-foundations/03-containers.md](./input/0-foundations/03-containers.md) | Docker fundamentals, multi-stage builds, base image discipline, one process per container |
+| [input/0-foundations/04-observability-101.md](./input/0-foundations/04-observability-101.md) | Three pillars (logs/metrics/traces), structured logging, observability vs monitoring |
+| [input/0-foundations/05-security-hygiene.md](./input/0-foundations/05-security-hygiene.md) | Secrets management, static credentials vs OIDC, least privilege, 2025 Red Hat GitLab case |
+| [input/0-foundations/06-ai-assisted-development.md](./input/0-foundations/06-ai-assisted-development.md) | AI code outcomes, scope-first review, working cycle, prompting/context management |
+| [input/0-foundations/07-technical-writing.md](./input/0-foundations/07-technical-writing.md) | README, ADR, runbook — scope, structure, and maintenance |
+
 ---
 
 ## Outputs
@@ -70,6 +82,16 @@
 | 5 | Quiz Generator | [outputs/azure-data-engineering/05-azure-data-engineering-quiz.md](./outputs/azure-data-engineering/05-azure-data-engineering-quiz.md) | #review: DRAFT |
 | 6 | Rubric Generator | [outputs/azure-data-engineering/06-azure-data-engineering-rubric.md](./outputs/azure-data-engineering/06-azure-data-engineering-rubric.md) | #review: DRAFT |
 | 7 | HTML Generator | [outputs/azure-data-engineering/07-azure-data-engineering-html.html](./outputs/azure-data-engineering/07-azure-data-engineering-html.html) | #review: DRAFT |
+
+---
+
+### Foundational Engineering (in progress)
+
+| # | Skill | File | Status |
+|---|-------|------|--------|
+| 1 | Research Synthesizer | [outputs/foundational-engineering/01-foundational-engineering-synthesis.md](./outputs/foundational-engineering/01-foundational-engineering-synthesis.md) | #review: DRAFT |
+| 2 | Learning Path Architect | [outputs/foundational-engineering/02-foundational-engineering-learning-path.md](./outputs/foundational-engineering/02-foundational-engineering-learning-path.md) | #review: DRAFT |
+| 3 | Module Content Builder | [outputs/foundational-engineering/03-foundational-engineering-module-content.md](./outputs/foundational-engineering/03-foundational-engineering-module-content.md) | #review: DRAFT |
 
 ---
 
