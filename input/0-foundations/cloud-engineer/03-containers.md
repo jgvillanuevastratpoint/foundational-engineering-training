@@ -8,7 +8,7 @@
 
 - **Audience:**
   - **Cloud Engineers:** cloud engineers build and operate the images and orchestration platforms that every other team's workloads run on; a poorly built image or a container running multiple responsibilities becomes a scaling, security, and debugging problem across every environment it's deployed into, not just one team's service.
-- **Video lecture (if any):** None yet produced. If recorded, keep to a single ~25-minute session: Docker fundamentals, multi-stage builds, image size discipline, and single-responsibility containers build on each other linearly and don't need separate sessions.
+- **Video lecture (if any):** "Docker in 10 Minutes – Complete Beginner's Guide (2026)" — https://youtu.be/ZyWBs0CU2wk (~10 minutes, well under the 30-minute cap). Covers Docker fundamentals at a beginner level; this document's multi-stage build, image size discipline, and single-responsibility container concepts go beyond what the video covers and should be treated as required reading alongside it, not optional depth.
 - **Learning objectives:**
   1. Explain what a container is in terms of the OS-level primitives (namespaces, cgroups) it relies on, and how that differs from a virtual machine.
   2. Distinguish a Docker image from a running container and explain the role of image layers.
@@ -92,9 +92,10 @@ Concepts are grouped into two halves that build in order: container fundamentals
 
 ## 5. Sources
 
+- Nayeem Islam (Medium), "The One Docker Tutorial Every Beginner Developer Actually Needs" — https://medium.com/@nomannayeem/the-one-docker-tutorial-every-beginner-developer-actually-needs-f94a5774da27
 - Docker Inc., "Docker overview" — https://docs.docker.com/get-started/overview/
 - Docker Inc., "Multi-stage builds" — https://docs.docker.com/build/building/multi-stage/
 - Docker Inc., "Dockerfile best practices" — https://docs.docker.com/build/building/best-practices/
 - Red Hat, "What is a Linux container?" — https://www.redhat.com/en/topics/containers/whats-a-linux-container
 - Kubernetes documentation, "Sidecar Containers" — https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/
-- **Video lectures:** none cited.
+- **Video lectures:** "Docker in 10 Minutes – Complete Beginner's Guide (2026)" — https://youtu.be/ZyWBs0CU2wk (~10 minutes).

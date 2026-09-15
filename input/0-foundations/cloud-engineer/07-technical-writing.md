@@ -11,10 +11,11 @@
 - **Video lecture (if any):** None yet produced. If recorded, keep to one ~20-minute session — README/ADR/runbook are three distinct document types but share the same underlying argument (bad docs are worse than no docs) and fit one session.
 - **Learning objectives:**
   1. Explain why READMEs, ADRs, and runbooks exist as separate document types rather than one general-purpose document.
-  2. Explain what a README is for and what information it must reliably answer for a new reader.
-  3. Explain what an Architecture Decision Record (ADR) captures that a README does not, and why that record matters after the decision-makers have moved on.
-  4. Explain what a runbook is for and why it must be written for someone operating under incident pressure, not someone casually browsing.
-  5. Explain the claim "bad docs are worse than no docs" and identify what makes a document actively harmful rather than merely unhelpful.
+  2. Explain the "curse of knowledge" and identify concrete techniques (leading with key information, active voice, consistent terminology, unambiguous pronouns) for writing clearly for a reader who doesn't share the author's context.
+  3. Explain what a README is for and what information it must reliably answer for a new reader.
+  4. Explain what an Architecture Decision Record (ADR) captures that a README does not, and why that record matters after the decision-makers have moved on.
+  5. Explain what a runbook is for and why it must be written for someone operating under incident pressure, not someone casually browsing.
+  6. Explain the claim "bad docs are worse than no docs" and identify what makes a document actively harmful rather than merely unhelpful.
 
 ---
 
@@ -26,13 +27,28 @@ No docs tells a reader clearly that they're on their own — they'll go read the
 
 ## 2. Core Concepts
 
-Concepts are grouped into two halves that build in order: the document types themselves first (what each one is for and who reads it, under what conditions), then documentation as an ongoing practice — what happens to those documents after they're written.
-
-### Document Types
+Concepts are grouped into three parts that build in order: what technical documentation is for, the writing craft that makes any document actually usable, the document types themselves (what each one is for and who reads it, under what conditions), and finally documentation as an ongoing practice — what happens to those documents after they're written.
 
 - **What Is Technical Documentation, and Why Three Different Types?**
   - **Context:** technical documentation exists to transfer operational knowledge across time and people — to someone new, to someone debugging at 2am, to someone re-litigating a decision a year later — none of whom can just ask the original author. A single document can't serve all three moments well: a newcomer needs orientation, an incident responder needs literal steps, and a future decision-maker needs historical reasoning. READMEs, runbooks, and ADRs exist because they're answers to those three distinct questions, not three names for the same kind of writing.
   - **Illustration:** not needed — conceptual framing, made concrete by the three document-type concepts that follow.
+
+### Writing Craft Fundamentals
+
+These are the mechanics that make any of the three document types actually readable — they apply equally whether you're writing a README, an ADR, or a runbook, which is why they're covered once, up front, rather than repeated under each document type.
+
+- **Audience Analysis & the Curse of Knowledge**
+  - **Context:** before writing anything, identify who the reader actually is and what they already know versus what they need explained; the single biggest obstacle to doing this well is the "curse of knowledge" — once you understand something, it becomes very hard to remember what it was like not to, so you skip steps and context a less-familiar reader actually needs. Writers who are experts on the system they're documenting are the ones most at risk of this, not least at risk.
+  - **Illustration:** [x] needed — a simple two-column comparison: what the author knows implicitly (env vars set locally, tribal context) versus what a new reader actually has in front of them (just the document).
+- **Writing for Skimmability: Lead With Key Information**
+  - **Context:** put the most important information first — the conclusion or the action a reader needs, not the background that led you there — and break long topics into short, clearly labeled sections; readers of technical documents (especially runbooks under incident pressure) scan for the relevant part rather than reading start to finish, so a document structured like a narrative buries the part they need.
+  - **Illustration:** not needed — reinforced directly in the runbook example under Document Types.
+- **Clarity Mechanics: Active Voice, Consistent Terms, Unambiguous Pronouns**
+  - **Context:** three concrete, checkable habits that repeatedly separate clear technical writing from confusing technical writing: preferring active voice ("the script deletes the file" rather than "the file is deleted by the script, in most cases") so the reader always knows who or what is doing the action; using the same term for the same thing throughout a document instead of varying vocabulary for style; and eliminating pronouns ("it," "this," "that") wherever what they refer to isn't immediately obvious.
+  - **Illustration:** not needed — best taught with short before/after sentence rewrites rather than a diagram.
+
+### Document Types
+
 - **READMEs**
   - **Context:** the entry-point document for a repository or service, expected to reliably answer: what is this, how do I run/deploy it, what are its dependencies, and where do I go next (owner, related docs); it is not the place for deep design rationale or step-by-step incident procedures.
   - **Illustration:** [x] needed — a simple annotated outline of a good README's structure (purpose, setup, dependencies, ownership/contact, links out) versus a common bad example (a wall of outdated setup commands with no context on what the service even does).
@@ -72,6 +88,7 @@ Concepts are grouped into two halves that build in order: the document types the
 3. **A README that "worked" for the author and no one else**
    - **Scenario:** A README instructs new contributors to run a setup script, but the script silently depends on an environment variable the original author had set globally on their own machine months ago and never documented. Every new contributor's setup fails at the same step with a confusing, unrelated error.
    - **Technical Writing in Action:**
+     - *Audience Analysis & the Curse of Knowledge:* the author no longer remembered that the environment variable wasn't part of a clean setup, because it had been part of their own environment for so long — the exact failure mode the concept describes, where expertise erases awareness of what a new reader doesn't already have.
      - *READMEs:* the README's setup section gave the appearance of completeness (a runnable script) while omitting a dependency required for that script to actually work, which is more damaging than an honest "setup is undocumented, ask the team" because it costs each new reader the same debugging time before they discover the gap.
    - **Outcome:** the team requires that README setup instructions be verified against a genuinely clean environment (e.g., a fresh container) before merging, not just verified against the author's own already-configured machine.
 
@@ -79,6 +96,9 @@ Concepts are grouped into two halves that build in order: the document types the
 
 ## 4. Best Practice Checklist / Frameworks
 
+- Before writing, identify who the reader actually is and what they already know — don't assume they share your context, especially on a system you know well (the curse of knowledge is strongest exactly where you're most expert).
+- Lead with the most important information (the conclusion, the action needed) rather than the background that led you there; break long topics into short, clearly labeled sections a reader can scan.
+- Prefer active voice, use one consistent term per concept throughout a document, and cut any pronoun ("it," "this," "that") whose referent isn't immediately obvious.
 - Write READMEs to reliably answer: what this is, how to run/deploy it, its key dependencies, and who owns it — verified against a clean environment, not the author's already-configured machine.
 - Write one ADR per significant architectural decision, including alternatives considered and consequences, and never edit an old ADR to reflect a new decision — write a new one that explicitly supersedes it.
 - Write runbooks as literal, executable steps (exact commands, exact links, exact expected output) for someone under incident pressure who may be unfamiliar with the system, and update them as part of any change to the systems or tools they reference.
@@ -91,7 +111,7 @@ Concepts are grouped into two halves that build in order: the document types the
 ## 5. Sources
 
 - Michael Nygard, "Documenting Architecture Decisions" (the original ADR proposal) — https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions
-- Google, "Technical Writing for Engineers" — https://developers.google.com/tech-writing
+- Google, "Technical Writing One" (course overview) — https://developers.google.com/tech-writing/one
 - PagerDuty, "How to write a runbook" — https://www.pagerduty.com/resources/learn/what-is-a-runbook/
 - Made With ML / community best practices, "How to write a good README" — https://www.makeareadme.com/
 - ThoughtWorks Technology Radar, "Lightweight Architecture Decision Records" — https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records
